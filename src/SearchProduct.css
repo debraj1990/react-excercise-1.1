@@ -1,3 +1,17 @@
 .search-section input[type="search"] {
     width: 250px;
 }
+.search-section table {
+    margin: auto auto;
+    text-align: start;
+}
+.search-section table img {
+    width: 160px;
+    height: auto;
+}
+.search-section table td.product-name {
+    width: 200px;
+}
+.search-section table td.product-description {
+    width: 600px;
+}

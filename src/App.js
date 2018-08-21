@@ -34,9 +34,9 @@ class ParentCompAverageCalc extends Component {
         <p className="App-intro">
         1]	Create a stateful parent controller with 2 stateless child components. Pass props and handlers from parent to child.
         </p>
-        {/* Props "numIncrease" and handler "childComp1IncrHandler" passed from parent component "ParentCompAverageCalc" to child component "ChildComp1" */}
+        {/* Props "incrValue" and handler "childComp1IncrHandler" passed from parent component "ParentCompAverageCalc" to child component "ChildComp1" */}
         <ChildComp1 onClick={this.childComp1IncrHandler} incrValue={this.state.numIncrease} />
-        {/* Props "numDecrease" and handler "childComp2DecrHandler" passed from parent component "ParentCompAverageCalc" to child component "ChildComp2" */}
+        {/* Props "decrValue" and handler "childComp2DecrHandler" passed from parent component "ParentCompAverageCalc" to child component "ChildComp2" */}
         <ChildComp2 onClick={this.childComp2DecrHandler} decrValue={this.state.numDecrease} />
         <p>Average of {this.state.numIncrease} and {this.state.numDecrease} is <b>{(this.state.numIncrease + this.state.numDecrease)/2}</b></p>
       </div>

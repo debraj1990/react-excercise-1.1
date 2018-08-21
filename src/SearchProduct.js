@@ -26,9 +26,20 @@ class SearchProduct extends Component {
     }
     resetHandler = () => {
         document.getElementById('searchbox').value = '';
+        this.setState({
+            productsObj: _productsObj
+        });
         console.log(this.state.productsObj);
     }
-    searchHandler = () => {}
+    searchHandler = () => {
+        const inputText = document.getElementById('searchbox').value;
+        const filteredProducts = _productsObj.filter(productObjItem => productObjItem.productName.toLowerCase().includes(inputText.toLowerCase()));
+        this.setState({
+            productsObj: filteredProducts
+        });
+        console.log(inputText);
+        console.log(this.state.productsObj);
+    }
     render() {
         return(
             <div className="search-section App">
@@ -41,11 +52,34 @@ class SearchProduct extends Component {
                         <li>Search should comprise of a search box and a CTA button.</li>
                     </ul>
                 </div>
-                <input id="searchbox" type="search" placeholder="Start typing Product Name to Search" />
+                <input id="searchbox" type="search" placeholder="Start typing Product Name to Search" onKeyUp={this.searchHandler} />
                 <button onClick={this.resetHandler}>Reset</button>
+                <SearchResultsTable filteredProducts={this.state.productsObj} />
             </div>
         );
     }
 }
+
+const SearchResultsTable = ({filteredProducts}) => (
+    <table><tbody>
+        <tr>
+            <th>Product</th><th>Description</th>
+        </tr>
+        {filteredProducts.map(filteredItem =>
+        <tr key={filteredItem.productID}>
+            <td className="product-name">
+                <div>
+                    <img src={filteredItem.productThumbnail} title={filteredItem.productDesc} alt={filteredItem.productDesc} />
+                </div>
+                <div>{filteredItem.productName}</div>
+            </td>
+            <td className="product-description">
+                <div>Type: {filteredItem.productType}</div>
+                <div>Description: {filteredItem.productDesc}</div>
+            </td>
+        </tr>
+        )}
+    </tbody></table>
+);
 
 export default SearchProduct;
