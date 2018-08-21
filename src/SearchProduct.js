@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './SearchProduct.css';
+import 'airbnb-js-shims';
 
 // 2.	Small Project
 // Create a simple react application with following use case:-
@@ -53,7 +54,7 @@ class SearchProduct extends Component {
                     </ul>
                 </div>
                 <input id="searchbox" type="search" placeholder="Start typing Product Name to Search" onKeyUp={this.searchHandler} />
-                <button onClick={this.resetHandler}>Reset</button>
+                <button onClick={this.resetHandler} title="Click Reset to list all Products">Reset</button>
                 <SearchResultsTable filteredProducts={this.state.productsObj} />
             </div>
         );
